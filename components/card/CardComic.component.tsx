@@ -10,7 +10,7 @@ const CardComic: FC<IComics> = ({title, thumbnail, id }) => {
 const router = useRouter();
 
 const handleClickDetails = () => {
-  router.push(`/comics/${id}`);
+  router.push(`/comic/${id}`);
 };
 const handleClickCheckout = () => {
   router.push(`/checkout/${id}`);
