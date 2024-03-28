@@ -1,9 +1,8 @@
 import { Box } from '@mui/material';
 import CardDetails from 'dh-marvel/components/card/CardDetails.component';
-
 import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
 import LayoutGeneral from 'dh-marvel/components/layouts/layout-general';
-import { getCharacterByComic, getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
+import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
@@ -34,7 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = parseInt(params?.id as string, 10);
     const comic = await getComic(id);
-    const characters = await getCharacterByComic(id);
+    const characters = await getCharactersComic(id);
 
     return {
       props: {
