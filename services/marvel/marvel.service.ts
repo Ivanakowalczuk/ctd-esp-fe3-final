@@ -44,3 +44,8 @@ export const getCharactersComic = async (comicId: number) => {
     const data = await fetchApi(`comics/${comicId}/characters`);
     return data.data.results;
   };
+
+  export const getAllCharacters = async () => {
+    const data = await fetchApi(`characters`);
+    return data.data.results;
+  };
