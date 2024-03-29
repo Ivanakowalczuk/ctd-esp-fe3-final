@@ -6,6 +6,51 @@ import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marv
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
+
+const ComicDetails=({ comic, characters }: { comic: any, characters: any }) =>{
+  if (!comic) {
+    return (
+      <>
+        <Head>
+          <title>Error | DH MARVEL</title>
+          <meta name="description" content="Error" />
+        </Head>
+        <LayoutGeneral >
+          <Box sx={{ marginBottom: '2rem' }}>
+            <BodySingle title='Error'>
+              <p>Hubo un error al cargar el cómic.</p>
+            </BodySingle>
+          </Box>
+        </LayoutGeneral>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Head>
+        <title>{comic?.title} | DH MARVEL</title>
+        <meta name="description" content={`${comic?.title}: detalle de cómic`} />
+      </Head>
+     
+        <Box sx={{  marginBottom: '1rem' }}>
+          <BodySingle title='Detalle cómic'   >
+            <CardDetails
+              title={comic?.title}
+              description={comic?.description}
+              image={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`}
+              id={comic?.id}
+              price={comic?.price}
+              oldPrice={comic?.oldPrice}
+              stock={comic?.stock}
+              characters={characters}
+            />
+          </BodySingle>
+        </Box>
+     
+    </>
+  );
+}
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const response = await getComics();
@@ -49,50 +94,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 };
-
-function ComicDetails({ comic, characters }: { comic: any, characters: any }) {
-  if (!comic) {
-    return (
-      <>
-        <Head>
-          <title>Error | DH MARVEL</title>
-          <meta name="description" content="Error al cargar el cómic" />
-        </Head>
-        <LayoutGeneral >
-          <Box sx={{ marginBottom: '2rem' }}>
-            <BodySingle title='Error al cargar el cómic'>
-              <p>Hubo un error al cargar el cómic. Por favor, inténtalo nuevamente más tarde.</p>
-            </BodySingle>
-          </Box>
-        </LayoutGeneral>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <Head>
-        <title>{comic?.title} | DH MARVEL</title>
-        <meta name="description" content={`${comic?.title}: página detalle de cómic`} />
-      </Head>
-     
-        <Box sx={{  marginBottom: '1rem' }}>
-          <BodySingle title='Detalle cómic'   >
-            <CardDetails
-              title={comic?.title}
-              description={comic?.description}
-              image={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`}
-              id={comic?.id}
-              price={comic?.price}
-              oldPrice={comic?.oldPrice}
-              stock={comic?.stock}
-              characters={characters}
-            />
-          </BodySingle>
-        </Box>
-     
-    </>
-  );
-}
 
 export default ComicDetails;

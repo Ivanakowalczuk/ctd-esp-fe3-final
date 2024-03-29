@@ -22,4 +22,25 @@ export type CheckoutInput = {
         image: string;
         price: number;
     }
+    
 }
+
+export type DeliveryDataType = {
+    address1: string;
+    address2: string | null;
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+  export type PersonalDataType = {
+    email: string;
+    name: string;
+    lastname: string;
+  };
+  
+  export type PaymentDataType = {
+    number: string;
+    cvc: string;
+    expDate: string;
+    nameOnCard: string;
+  };
