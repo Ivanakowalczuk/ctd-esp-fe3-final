@@ -14,10 +14,8 @@ import CardComicCheckout from 'dh-marvel/components/card/cardComicCheckout.compo
 
 
 
-const CheckoutPage = ({ comic, characters }: { comic: any, characters: any }) => {
-  const router = useRouter();
-  const id = router?.query?.id
-  
+const CheckoutPage = ({ comic  }: { comic: any }) => {
+    
   const {comicState} = useGlobalStates()
   console.log(comicState)
 
@@ -46,18 +44,9 @@ const CheckoutPage = ({ comic, characters }: { comic: any, characters: any }) =>
 
   return (
     <FormProvider {...methods}>
-     <Box>
-     
-    <CardComicCheckout  title={comic.title} id={comic.id} thumbnail={comic.thumbnail} price={comic.price} />
-
-
-  
-      
-      </Box>
-     
-      <Box display="flex" justifyContent={'space-between'}>
-           
-      <Form />
+     <Box display="flex" justifyContent={'space-around'} alignItems={'start'}>
+             <CardComicCheckout   title={comic.title} id={comic.id} thumbnail={comic.thumbnail} price={comic.price}  />      
+        <Form />
      </Box>
     </FormProvider>
   );
@@ -89,12 +78,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = parseInt(params?.id as string, 10);
     const comic = await getComic(id);
-    const characters = await getCharactersComic(id);
+    
 
     return {
       props: {
         comic,
-        characters
+      
       },
       revalidate: 10,
     };

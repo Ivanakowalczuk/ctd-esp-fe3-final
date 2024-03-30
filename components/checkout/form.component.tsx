@@ -28,7 +28,7 @@ const Form = () => {
 
   return (
  <form onSubmit={handleSubmit(onSubmit)}>
-    <Box>
+    <Box mt={10} height={'auto'}>
       <Stepper activeStep={activeStep} alternativeLabel>
         <Step>
           <StepLabel>1</StepLabel>
@@ -53,7 +53,7 @@ const Form = () => {
         <FormDataPaymentFinal />
       )}
     </Box>
-    <Box display="flex" justifyContent="space-between">
+    <Box display="flex" justifyContent="space-around" mt={2} mb={2}>
            {activeStep > 0 ?
             <Button type='button' variant='outlined' color='primary' onClick={handleBack}>
               Anterior
@@ -66,7 +66,7 @@ const Form = () => {
             Enviar
            </Button>
            :
-            <Button onClick={handleNext} variant='contained' color='primary'>
+            <Button onClick={handleNext} variant='contained' color='primary' >
               Siguiente
             </Button>
             }

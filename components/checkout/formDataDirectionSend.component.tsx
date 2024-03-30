@@ -11,9 +11,9 @@ const FormDataDirectionSend = () => {
 
  
   return (
-    <Box component="section" sx={{ width: "700px", marginTop: "50px" }}>
-      <Paper elevation={1} sx={{ p: "32px", display: "flex", flexDirection: "column", gap: 3 }}>
-        <Typography variant='h4' align='center'>
+    <Box component="section" sx={{ width: "500px", marginTop: "30px" }}>
+      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column",  }}>
+        <Typography variant='h4' align='center' mb={2}>
           Dirección de entrega
         </Typography>
 
@@ -30,11 +30,10 @@ const FormDataDirectionSend = () => {
                 label="Dirección"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
-              />
+                             />
             )}
           />
-         <Typography  variant='caption' color="error">
+         <Typography  variant='caption' color="error"  mb={1}>
           <ErrorMessage name="direccion" errors={errors}/>
           </Typography>
 
@@ -50,10 +49,13 @@ const FormDataDirectionSend = () => {
                 label="Departamento"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+             
               />
             )}
           />
+           <Typography  variant='caption' color="error"  mb={1}>
+          <ErrorMessage name="departamento" errors={errors}/>
+          </Typography>
 
           <Controller
             name="provincia"
@@ -67,11 +69,11 @@ const FormDataDirectionSend = () => {
                 label="Provincia"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+                
               />
             )}
           />
-          <Typography  variant='caption' color="error">
+          <Typography  variant='caption' color="error" mb={1}>
           <ErrorMessage name="provincia" errors={errors}/>
           </Typography>
           <Controller
@@ -86,11 +88,11 @@ const FormDataDirectionSend = () => {
                 label="Ciudad"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+               
               />
             )}
           />
-        <Typography  variant='caption' color="error">
+        <Typography  variant='caption' color="error"  mb={1}>
           <ErrorMessage name="ciudad" errors={errors}/>
           </Typography>
           <Controller
@@ -105,11 +107,11 @@ const FormDataDirectionSend = () => {
                 label="Código Postal"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+              
               />
             )}
           />
-            <Typography  variant='caption' color="error">
+            <Typography  variant='caption' color="error"  mb={1}>
           <ErrorMessage name="codigoPostal" errors={errors}/>
           </Typography>
 

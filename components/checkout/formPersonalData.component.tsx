@@ -11,8 +11,8 @@ const FormPersonalData = () => {
 
 
   return (
-    <Box component="section" sx={{ width: "700px", marginTop: "50px" }}>
-      <Paper elevation={1} sx={{ p: "32px", display: "flex", flexDirection: "column", gap: 3 }}>
+    <Box component="section" sx={{ width: "500px", marginTop: "10px" }}>
+      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column", gap: 0.5 }}>
         <Typography variant='h4' align='center'>
           Compra
         </Typography>
@@ -27,11 +27,11 @@ const FormPersonalData = () => {
                 label="Nombre"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+               
               />
             )}
           />
-          <Typography  variant='caption' color="error">
+          <Typography  variant='caption' color="error"  mb={2}>
           <ErrorMessage name="nombre" errors={errors}/>
           </Typography>
           <Controller
@@ -45,11 +45,11 @@ const FormPersonalData = () => {
                 label="Apellido"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+          
               />
             )}
           />
-        <Typography variant='caption' color="error"> 
+        <Typography variant='caption' color="error"  mb={2}> 
             <ErrorMessage name="apellido" errors={errors}/>
         </Typography>
          
@@ -64,11 +64,11 @@ const FormPersonalData = () => {
                 label="Email"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+                
               />
             )}
           />
-          <Typography variant='caption' color="error">
+          <Typography variant='caption' color="error" mb={2}>
           <ErrorMessage name="email" errors={errors}/>
           </Typography>
     

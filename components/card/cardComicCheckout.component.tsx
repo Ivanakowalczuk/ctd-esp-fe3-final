@@ -17,7 +17,7 @@ const CardComicCheckout: FC<IComics> = ({title, thumbnail, id, price }) => {
   };
  
   return (
-    <Card  sx={{width: "auto", maxWidth: 200, height:480, paddingBottom:3, marginBottom: 1, marginTop: 1}}>
+    <Card sx={{width: "auto", maxWidth: 200, height:400, paddingBottom:3,  marginRight: 10, mt:10}}>
       
       <CardMedia
         component="img"

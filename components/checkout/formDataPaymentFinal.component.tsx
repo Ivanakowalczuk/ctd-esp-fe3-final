@@ -10,8 +10,8 @@ const FormDataPaymentFinal = () => {
 
 
   return (
-    <Box component="section" sx={{ width: "700px", marginTop: "50px" }}>
-      <Paper elevation={1} sx={{ p: "32px", display: "flex", flexDirection: "column", gap: 3 }}>
+    <Box component="section" sx={{ width: "600px", marginTop: "30px" }}>
+      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column", gap: 1 }}>
         <Typography variant='h4' align='center'>
           Datos de Pago
         </Typography>
@@ -29,11 +29,11 @@ const FormDataPaymentFinal = () => {
                 label="Número de Tarjeta"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+               
               />
             )}
           />
-            <Typography  variant='caption' color="error">
+            <Typography  variant='caption' color="error"  mb={2}>
           <ErrorMessage name="numeroTarjeta" errors={errors}/>
           </Typography>
           <Controller
@@ -48,11 +48,13 @@ const FormDataPaymentFinal = () => {
                 label="Nombre de Titular"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+               
               />
             )}
           />
-        
+         <Typography  variant='caption' color="error"  mb={2}>
+          <ErrorMessage name="nombreTitular" errors={errors}/>
+          </Typography>
           <Controller
             name="fechaExp"
             control={control}
@@ -65,11 +67,11 @@ const FormDataPaymentFinal = () => {
                 label="dd/aaaa"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+               
               />
             )}
           />
-          <Typography  variant='caption' color="error">
+          <Typography  variant='caption' color="error"  mb={2}>
           <ErrorMessage name="fechaExp" errors={errors}/>
           </Typography>
           <Controller
@@ -84,11 +86,11 @@ const FormDataPaymentFinal = () => {
                 label="Código de seguridad"
                 variant="outlined"
                 fullWidth
-                sx={{ mb: 2 }}
+               
               />
             )}
           />
-          <Typography  variant='caption' color="error">
+          <Typography  variant='caption' color="error"  mb={2}>
           <ErrorMessage name="codigoSeguridad" errors={errors}/>
           </Typography>
             
