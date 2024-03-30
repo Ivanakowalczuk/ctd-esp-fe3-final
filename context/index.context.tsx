@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer} from "react";
+import { getComic, getComics } from "dh-marvel/services/marvel/marvel.service";
+import { createContext, useContext, useEffect, useReducer} from "react";
 
 const ContextGlobal = createContext<any>("");
 
@@ -18,6 +19,8 @@ const comicReducer = (state: any, action:any) => {
   const ContextProvider = ({children}:{children:any}) => {
     const [comicState, comicDispatch] = useReducer(comicReducer,  initialComicState)
   
+
+   
  return(
 
     <ContextGlobal.Provider value={{comicState, comicDispatch}}>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
@@ -23,6 +23,17 @@ const Index: NextPage<Props> = ({ comics, totalComics }) => {
   const addComics = () => {
     comicDispatch ({type: 'GET_COMICS', payload: comics})
   }
+
+  useEffect(()=>{
+    try {
+      if(comics){
+        addComics()
+      }
+    } catch (error) {
+      console.log(error, 'no se agregaron los comics')
+    }
+    
+  },[])
   
   return (
     <>
@@ -36,7 +47,7 @@ const Index: NextPage<Props> = ({ comics, totalComics }) => {
         <Grid  container spacing={2}>
           {comicsToShow.map((comic) => (
             <Grid display="flex" justifyContent="center" alignItems="center" item xs={12} sm={6} md={4} key={comic.id}>
-              <CardComic title={comic.title} id={comic.id} thumbnail={comic.thumbnail} />
+              <CardComic title={comic.title} id={comic.id} thumbnail={comic.thumbnail} price={comic.price}/>
             </Grid>
           ))}
         </Grid>

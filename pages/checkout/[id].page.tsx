@@ -6,47 +6,21 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Form from 'dh-marvel/components/checkout/form.component';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import { getComic } from 'dh-marvel/services/marvel/marvel.service';
 import { useGlobalStates } from 'context/index.context';
+import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import CardDetails from 'dh-marvel/components/card/CardDetails.component';
+import CardComicCheckout from 'dh-marvel/components/card/cardComicCheckout.component';
 
 
-const CheckoutPage = () => {
+
+const CheckoutPage = ({ comic, characters }: { comic: any, characters: any }) => {
   const router = useRouter();
-  const [comic, setComic] = useState<any>();
+  const id = router?.query?.id
+  
   const {comicState} = useGlobalStates()
   console.log(comicState)
 
-  // const [id, setId] = useState<number>(0)
-
-  // const getId = (query: string | string[] | undefined ) => {
-  //     setId(parseInt(query as string, 10))
-
-  // }
-
-  // const fetchData = async () => {
-  //   try {
-  //       getComic(id).then((data:any)=>{
-  //       setComic(data)
-  //     })
-      
-  //   } catch (error) {
-  //     console.error('Error fetching comic:', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-
-  //   getId(router.query.id)
-
-  //   if (id === null) {
-  //     console.log('id is null')
-  //   }else{
-  //        fetchData();
-  //   }
-
-  // }, [id]);
-
-  // console.log(comic, 'comic');
   type DataForm = yup.InferType<typeof  schema>
 
   const methods = useForm<DataForm>({
@@ -72,20 +46,66 @@ const CheckoutPage = () => {
 
   return (
     <FormProvider {...methods}>
-      <Box display="flex" justifyContent={'space-between'}>
-     {comic ?
-      <Typography>
-          {comic}
-      </Typography>
-      :
-      <></>
-     }
+     <Box>
+     
+    <CardComicCheckout  title={comic.title} id={comic.id} thumbnail={comic.thumbnail} price={comic.price} />
+
+
+  
       
-       <Form />
+      </Box>
+     
+      <Box display="flex" justifyContent={'space-between'}>
+           
+      <Form />
      </Box>
     </FormProvider>
   );
 };
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const response = await getComics();
+
+    const paths = response?.data?.results?.map(({ id }: { id: number }) => ({
+      params: {
+        id: id?.toString()
+      }
+    }));
+
+    return {
+      paths: paths || [],
+      fallback: 'blocking'
+    };
+  } catch (error) {
+    console.error('Error retrieving comics for paths:', error);
+    return {
+      paths: [],
+      fallback: 'blocking'
+    };
+  }
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  try {
+    const id = parseInt(params?.id as string, 10);
+    const comic = await getComic(id);
+    const characters = await getCharactersComic(id);
+
+    return {
+      props: {
+        comic,
+        characters
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error('Error retrieving comic and characters:', error);
+    return {
+      notFound: true
+    };
+  }
+};
+
 
 
 export default CheckoutPage;

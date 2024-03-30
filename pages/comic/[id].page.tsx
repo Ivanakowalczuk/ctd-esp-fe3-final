@@ -6,6 +6,7 @@ import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marv
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useGlobalStates } from 'context/index.context';
+import { useEffect } from 'react';
 
 
 const ComicDetails=({ comic, characters }: { comic: any, characters: any }) =>{
@@ -14,7 +15,17 @@ const ComicDetails=({ comic, characters }: { comic: any, characters: any }) =>{
     comicDispatch ({type: 'GET_COMIC', payload: comic})
   }
 
-  console.log()
+useEffect(()=>{
+  try {
+    if(comic){
+      addComic()
+    }
+  } catch (error) {
+    console.log(error, 'no  se guardó el comic')
+  }
+  
+},[comic.id])
+  
   if (!comic) {
     return (
       <>

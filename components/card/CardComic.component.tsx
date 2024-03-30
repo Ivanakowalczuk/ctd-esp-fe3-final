@@ -1,19 +1,34 @@
 import { useRouter } from 'next/router';
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import Card from '@mui/material/Card';
 import { Button, CardActions, CardContent, CardMedia, Stack, Typography } from '@mui/material';
 import { IComics } from 'dh-marvel/pages/index.page';
+import { useGlobalStates } from 'context/index.context';
 
 
 
-const CardComic: FC<IComics> = ({title, thumbnail, id }) => {
+const CardComic: FC<IComics> = ({title, thumbnail, id, price }) => {
 const router = useRouter();
+const {comicState, comicDispatch} = useGlobalStates()
+
+const comic: IComics = {
+  title: title,
+  thumbnail: thumbnail,
+  id: id,
+  price: price
+}
+
+const addComic = () => {
+    comicDispatch ({type: 'GET_COMIC', payload: comic})
+  
+}
 
 const handleClickDetails = () => {
   router.push(`/comic/${id}`);
 };
 const handleClickCheckout = () => {
   router.push(`/checkout/${id}`);
+  addComic()
 };
 
 
@@ -25,6 +40,7 @@ const handleClickCheckout = () => {
   };
 
 
+ 
   return (
     <Card  sx={{width: "auto", maxWidth: 300, height:380, paddingBottom:3, marginBottom: 1, marginTop: 1}}>
       
