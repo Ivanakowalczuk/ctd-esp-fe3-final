@@ -43,7 +43,7 @@ const CardDetails = ({ title, description, image, price, id, oldPrice, stock, ch
                 <CardActions>
                     {stock > 0
                         ?
-                        <Link href={{ pathname: "/checkout/", query: `comic=${id}` }} >
+                        <Link href={`/checkout/${id}`} >
                             <Button variant="contained" >
                                 Comprar
                             </Button>

@@ -5,6 +5,7 @@ import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
 import { getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { Grid, Box, Pagination } from '@mui/material';
 import CardComic from 'dh-marvel/components/card/CardComic.component';
+import { useGlobalStates } from 'context/index.context';
 
 const Index: NextPage<Props> = ({ comics, totalComics }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +19,11 @@ const Index: NextPage<Props> = ({ comics, totalComics }) => {
   const startIndex = (currentPage - 1) * comicsPerPage;
   const endIndex = startIndex + comicsPerPage;
   const comicsToShow = comics.slice(startIndex, endIndex);
-
+  const {comicDispatch} = useGlobalStates()
+  const addComics = () => {
+    comicDispatch ({type: 'GET_COMICS', payload: comics})
+  }
+  
   return (
     <>
       <Head>

@@ -5,9 +5,16 @@ import LayoutGeneral from 'dh-marvel/components/layouts/layout-general';
 import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useGlobalStates } from 'context/index.context';
 
 
 const ComicDetails=({ comic, characters }: { comic: any, characters: any }) =>{
+  const {comicDispatch, comicState} = useGlobalStates()
+  const addComic = () => {
+    comicDispatch ({type: 'GET_COMIC', payload: comic})
+  }
+
+  console.log()
   if (!comic) {
     return (
       <>
