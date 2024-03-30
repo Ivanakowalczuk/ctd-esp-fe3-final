@@ -12,8 +12,8 @@ const FormPersonalData = () => {
 
   return (
     <Box component="section" sx={{ width: "500px", marginTop: "10px" }}>
-      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column", gap: 0.5 }}>
-        <Typography variant='h4' align='center'>
+      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column",  }}>
+        <Typography variant='h4' align='center' mb={2}>
           Compra
         </Typography>
           <Controller

@@ -11,8 +11,8 @@ const FormDataPaymentFinal = () => {
 
   return (
     <Box component="section" sx={{ width: "600px", marginTop: "30px" }}>
-      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column", gap: 1 }}>
-        <Typography variant='h4' align='center'>
+      <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column" }}>
+        <Typography variant='h4' align='center' mb={2}>
           Datos de Pago
         </Typography>
 
