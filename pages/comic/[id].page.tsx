@@ -5,26 +5,10 @@ import LayoutGeneral from 'dh-marvel/components/layouts/layout-general';
 import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import { useGlobalStates } from 'context/index.context';
-import { useEffect } from 'react';
 
 
 const ComicDetails=({ comic, characters }: { comic: any, characters: any }) =>{
-  const {comicDispatch, comicState} = useGlobalStates()
-  const addComic = () => {
-    comicDispatch ({type: 'GET_COMIC', payload: comic})
-  }
-
-useEffect(()=>{
-  try {
-    if(comic){
-      addComic()
-    }
-  } catch (error) {
-    console.log(error, 'no  se guardó el comic')
-  }
   
-},[comic.id])
   
   if (!comic) {
     return (

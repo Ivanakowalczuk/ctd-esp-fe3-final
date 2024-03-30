@@ -11,7 +11,7 @@ const FormDataDirectionSend = () => {
 
  
   return (
-    <Box component="section" sx={{ width: "500px", marginTop: "30px" }}>
+    <Box component="section" sx={{ width:{xs:'300px', sm: '450px'}, marginTop: "30px" }}>
       <Paper elevation={1} sx={{ p: "25px", display: "flex", flexDirection: "column",  }}>
         <Typography variant='h4' align='center' mb={2}>
           Dirección de entrega

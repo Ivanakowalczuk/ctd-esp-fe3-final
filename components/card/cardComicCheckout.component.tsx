@@ -3,7 +3,7 @@ import React, { FC, useEffect } from 'react'
 import Card from '@mui/material/Card';
 import { CardContent, CardMedia,  Typography } from '@mui/material';
 import { IComics } from 'dh-marvel/pages/index.page';
-import { useGlobalStates } from 'context/index.context';
+
 
 
 
@@ -17,7 +17,7 @@ const CardComicCheckout: FC<IComics> = ({title, thumbnail, id, price }) => {
   };
  
   return (
-    <Card sx={{width: "auto", maxWidth: 200, height:400, paddingBottom:3,  marginRight: 10, mt:10}}>
+    <Card sx={{width: "auto", maxWidth: 200, height:400, paddingBottom:3,  mt:10}}>
       
       <CardMedia
         component="img"

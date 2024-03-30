@@ -5,19 +5,15 @@ import {schema} from 'rules'
 import { yupResolver } from '@hookform/resolvers/yup';
 import Form from 'dh-marvel/components/checkout/form.component';
 import { Box, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import { useGlobalStates } from 'context/index.context';
-import { getCharactersComic, getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
+import {  getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import CardDetails from 'dh-marvel/components/card/CardDetails.component';
+
 import CardComicCheckout from 'dh-marvel/components/card/cardComicCheckout.component';
 
 
 
 const CheckoutPage = ({ comic  }: { comic: any }) => {
     
-  const {comicState} = useGlobalStates()
-  console.log(comicState)
 
   type DataForm = yup.InferType<typeof  schema>
 
@@ -44,7 +40,7 @@ const CheckoutPage = ({ comic  }: { comic: any }) => {
 
   return (
     <FormProvider {...methods}>
-     <Box display="flex" justifyContent={'space-around'} alignItems={'start'}>
+     <Box  flexDirection={{ xs: 'column', sm: 'row' }} display="flex" justifyContent={{  xs: 'center', sm:'space-around'}} alignItems={{xs: 'center', sm:'start'}} gap={5}>
              <CardComicCheckout   title={comic.title} id={comic.id} thumbnail={comic.thumbnail} price={comic.price}  />      
         <Form />
      </Box>

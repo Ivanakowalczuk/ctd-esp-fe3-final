@@ -18,17 +18,14 @@ const comic: IComics = {
   price: price
 }
 
-const addComic = () => {
-    comicDispatch ({type: 'GET_COMIC', payload: comic})
-  
-}
+
 
 const handleClickDetails = () => {
   router.push(`/comic/${id}`);
 };
 const handleClickCheckout = () => {
   router.push(`/checkout/${id}`);
-  addComic()
+  
 };
 
 

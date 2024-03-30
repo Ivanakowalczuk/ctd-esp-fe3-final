@@ -4,18 +4,20 @@ import {  useFormContext } from 'react-hook-form';
 import FormPersonalData from '../../components/checkout/formPersonalData.component';
 import FormDataDirectionSend from 'dh-marvel/components/checkout/formDataDirectionSend.component';
 import FormDataPaymentFinal from 'dh-marvel/components/checkout/formDataPaymentFinal.component';
-
-
-
+import { useRouter } from 'next/router';
 
 
 
 const Form = () => {
   const {handleSubmit} = useFormContext()
   const [activeStep, setActiveStep] = useState(0);
+  const router = useRouter(); 
+  const id = router.query.id
 
  const onSubmit = (data:any)=>{
     console.log(data)
+    router.push(`/confirmada/${id}`);
+   
   };
 
   const handleNext = () => {
@@ -62,9 +64,11 @@ const Form = () => {
             <></>
              }
             {activeStep === 2 ?
-            <Button type='submit' variant='contained' color='primary' >
-            Enviar
-           </Button>
+           
+                <Button type='submit' variant='contained' color='primary' >
+                Enviar
+              </Button>
+        
            :
             <Button onClick={handleNext} variant='contained' color='primary' >
               Siguiente
